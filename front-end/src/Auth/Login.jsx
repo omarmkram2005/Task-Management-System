@@ -19,6 +19,9 @@ export default function Signup() {
   useEffect(() => {
     setLang(text);
   }, [text]);
+  useEffect(() => {
+    document.title = lang.login;
+  }, [lang]);
   async function handleLogin(e) {
     e.preventDefault();
     const { data, error } = await supabase.auth.signInWithPassword({

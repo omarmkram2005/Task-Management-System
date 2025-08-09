@@ -13,11 +13,12 @@ export default function ShowBoards() {
 
   const [lang, setLang] = useState({});
   const session = useContext(sessionSaver);
-  const { text } = useContext(langChanger);
+  const { lang: lango, text } = useContext(langChanger);
   useEffect(() => {
     setLang(text);
   }, [text]);
   const nav = useNavigate();
+  document.title = lango === "eng" ? "Boards" : "اللوحات";
 
   useEffect(() => {
     async function getdata(e) {

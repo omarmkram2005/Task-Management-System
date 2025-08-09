@@ -19,6 +19,9 @@ export default function Signup() {
   useEffect(() => {
     setLang(text);
   }, [text]);
+  useEffect(() => {
+    document.title = lang.signup;
+  }, [lang]);
   const handleSignUp = async (e) => {
     e.preventDefault();
     if (pass.length > 6) {

@@ -189,6 +189,7 @@ export default function NavBar() {
                       flexWrap: "wrap",
                       width: "150px",
                       overflow: "hidden",
+                      zIndex: "1000",
                     }}
                   >
                     <button

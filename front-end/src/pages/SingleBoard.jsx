@@ -29,7 +29,6 @@ export default function SingleBoard() {
   }, [text]);
 
   const { id } = useParams();
-
   useEffect(() => {
     if (!id) {
       return;
@@ -44,6 +43,8 @@ export default function SingleBoard() {
         console.error("خطأ في الإضافة:", boardError);
       } else {
         setBoard(boardData);
+        document.title = boardData[0].title;
+
         const { data: tasksData, error: tasksError } = await supabase
           .from("tasks")
           .select("*")
