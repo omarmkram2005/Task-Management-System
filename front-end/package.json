@@ -6,5 +6,21 @@
     "react-cookie": "^8.0.1",
     "react-router-dom": "^7.7.1",
     "universal-cookie": "^8.0.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.17",
+    "typescript": "5.5.4",
+    "vite": "^5.0.0",
+    "vite-plugin-react": "^4.0.0"
+  },
+  "name": "react-supabase-app",
+  "version": "1.0.0",
+  "description": "A React application using Supabase for backend services",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview  "
   }
 }

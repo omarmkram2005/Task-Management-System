@@ -53,5 +53,6 @@
   outline: none;
 }
 .addInputs::placeholder {
+  /* color: ; */
   color: var(--inputPlaceholderColor);
 }
