@@ -99,13 +99,13 @@
     font-size: 2em;
   }
   .sml {
-    flex-wrap: nowrap;
+    flex-wrap: nowrap !important;
   }
   .sml-btn {
     flex-wrap: wrap !important;
   }
   .sml-justi {
-    justify-content: center;
+    justify-content: center !important;
   }
 }
 @media (min-width: 1200px) {
