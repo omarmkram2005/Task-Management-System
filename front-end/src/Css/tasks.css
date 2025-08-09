@@ -1,0 +1,104 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+  justify-items: center;
+  text-align: left;
+}
+@media (max-width: 1000px) {
+  .grid-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .grid-column {
+    width: 100% !important;
+  }
+}
+.grid-column {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  padding: 16px;
+  width: 305px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: fit-content;
+}
+.to-do,
+.on-going,
+.done {
+  height: fit-content;
+}
+.task-card {
+  background-color: var(--task-bg);
+  padding: 15px 15px;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  overflow: hidden;
+}
+.task-title {
+  margin: 0;
+  width: 100%;
+}
+.task-title,
+.task-description {
+  white-space: normal;
+}
+.task-status {
+  width: 10px;
+  height: 10px;
+  background-color: greenyellow;
+  border-radius: 50%;
+  position: absolute;
+  top: 20px;
+}
+.to-do {
+  background-color: red;
+}
+.on-going {
+  background-color: yellow;
+}
+.task-description {
+  width: 100%;
+  color: var(--text-subtle);
+}
+.task-due-date {
+  width: 100%;
+}
+.penContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.559);
+  top: 0;
+  left: 0;
+  display: none;
+  opacity: 0;
+}
+.pen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+.board {
+  position: relative;
+}
+.task-card:hover .penContainer,
+.board:hover .penContainer {
+  display: block;
+  opacity: 1;
+}

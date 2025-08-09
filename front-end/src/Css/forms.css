@@ -1,0 +1,52 @@
+.signup form {
+  width: 350px;
+  padding: 20px 30px;
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  place-content: center;
+  gap: 15px;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
+.signup {
+  display: flex;
+  height: 100vh;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+}
+.signup form input {
+  flex-basis: 100%;
+  padding: 15px 10px;
+  background-color: var(--inputBgColor);
+  color: var(--inputColor);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border: none;
+  outline: none;
+}
+.signup form input::placeholder {
+  color: var(--inputPlaceholderColor);
+}
+.googleLogin {
+  padding: 10px 15px;
+}
+.err {
+  background-color: var(--error);
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 6px;
+  color: white;
+  transform: rotateX();
+  -webkit-transform: rotateX();
+  -moz-transform: rotateX();
+  -ms-transform: rotateX();
+  -o-transform: rotateX();
+}

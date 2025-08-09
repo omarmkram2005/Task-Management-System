@@ -1,0 +1,57 @@
+.boardsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 15px;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.board {
+  background-color: var(--card-bg);
+  padding: 0 10px;
+  flex-grow: 1;
+  max-width: 250px;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 0 10px 0 #9292ffde;
+  border: 1px solid #acacff;
+  cursor: pointer;
+  overflow: hidden;
+}
+.tasksCounter,
+.nextToDo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.tasks,
+.nextToDo {
+  display: flex;
+  flex-wrap: wrap;
+}
+.tasks {
+  color: var(--text-subtle);
+}
+.tasks span,
+.nextToDo span {
+  width: 100%;
+}
+.addInputs {
+  width: 355px;
+  height: 40px;
+  border-radius: 10px;
+  margin: 10px 0;
+  background-color: var(--inputBgColor);
+  color: var(--inputColor);
+  border: none;
+  padding: 13px;
+  outline: none;
+}
+.addInputs::placeholder {
+  color: var(--inputPlaceholderColor);
+}

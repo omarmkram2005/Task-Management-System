@@ -1,0 +1,42 @@
+{
+  "light": {
+    "--primary": "#3B82F6",
+    "--primary-hover": "#2563EB",
+    "--secondary": "#6B7280",
+    "--background": "#F9FAFB",
+    "--card-bg": "#d9e0e6",
+    "--success": "#10B981",
+    "--error": "#EF4444",
+    "--text-main": "#111827",
+    "--text-subtle": "#6B7280",
+    "--navBgColor": "#bbc9d7",
+    "--inputBgColor": "#bec9db",
+    "--inputColor": "#203c56",
+    "--inputPlaceholderColor": "#203b69",
+    "--rotateIcon": "180deg",
+    "--drobDownColor": "#ACCDFF",
+    "--baseColor": "#e0e0e0",
+    "--highlightColor": "#f5f5f5",
+    "--task-bg": "#81a3ff3d"
+  },
+  "dark": {
+    "--primary": "#60A5FA",
+    "--primary-hover": "#3B82F6",
+    "--secondary": "#9CA3AF",
+    "--background": "#1F2937",
+    "--card-bg": "#374151",
+    "--success": "#34D399",
+    "--error": "#F87171",
+    "--text-main": "#F9FAFB",
+    "--text-subtle": "#9CA3AF",
+    "--navBgColor": "#2C3C54",
+    "--inputBgColor": "#3d4a61",
+    "--inputColor": "white",
+    "--inputPlaceholderColor": "rgb(214, 233, 251)",
+    "--rotateIcon": "0deg",
+    "--drobDownColor": "#131C2B",
+    "--baseColor": "#232D37",
+    "--highlightColor": "#374150",
+    "--task-bg": "#1d242f"
+  }
+}
