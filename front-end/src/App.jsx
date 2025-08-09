@@ -11,6 +11,7 @@ import WebSite from "./pages/WebSite";
 import { supabase } from "./supabase";
 import SingleBoard from "./pages/SingleBoard";
 import Error404 from "./Errors/Error404.jsx";
+import Redirect from "./Errors/Redirect.jsx";
 function App() {
   if (!window.localStorage.getItem("lang")) {
     window.localStorage.setItem("lang", "eng");
@@ -22,9 +23,10 @@ function App() {
     <div>
       <Routes>
         <Route path="123" element={<Error404 />}></Route>
+        <Route element={<Redirect />} path="boards"></Route>
         <Route path="/" element={<WebSite />}>
           <Route element={<ProtectedRoute />}>
-            <Route element={<Home />} path="/"></Route>
+            <Route element={<Home />} path=""></Route>
             <Route element={<SingleBoard />} path="boards/:id"></Route>
           </Route>
 
@@ -32,6 +34,7 @@ function App() {
           <Route element={<GoCheckEmail />} path="/signup/confermation"></Route>
           <Route element={<Login />} path="/login"></Route>
         </Route>
+        <Route path="*" element={<Error404 />} />
       </Routes>
     </div>
   );

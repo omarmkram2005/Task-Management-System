@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { supabase } from "../supabase";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import "../Css/home.css";
 
@@ -22,6 +22,7 @@ export default function SingleBoard() {
   const [addbutton, setAddbutton] = useState(false);
   const [editingTaskId, setEditingTaskId] = useState(false);
   const [editBoard, setEditBoard] = useState(false);
+  const nav = useNavigate();
   const [lang, setLang] = useState({});
   const { lang: lango, text } = useContext(langChanger);
   useEffect(() => {
@@ -41,6 +42,9 @@ export default function SingleBoard() {
 
       if (boardError) {
         console.error("خطأ في الإضافة:", boardError);
+        nav("/404");
+      } else if (boardData.length === 0) {
+        nav("/404");
       } else {
         setBoard(boardData);
         document.title = boardData[0].title;
