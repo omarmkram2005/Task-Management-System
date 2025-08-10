@@ -95,7 +95,7 @@ export default function EditTask({ task, onClose }) {
       >
         {" "}
         <h2 style={{ margin: "10px 0", width: "100%", textAlign: "center" }}>
-          {lang.addTask}
+          {lang.editTask}
         </h2>
         <input
           className="addInputs"
@@ -153,7 +153,7 @@ export default function EditTask({ task, onClose }) {
             onClick={(e) => SubmitData(e)}
             disabled={submit || form.title === ""}
           >
-            {submit ? lang.editing : lang.editBoard}
+            {submit ? lang.editing : lang.editTask}
           </button>
           <button
             className="button"
