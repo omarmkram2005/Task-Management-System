@@ -33,7 +33,7 @@
     "done": "Done",
     "nextDead": "Next Dead Line At:",
     "deadLine": "Dead Line:",
-    "edittask": "Edit Task",
+    "editTask": "Edit Task",
     "editBoard": "Edit Board",
     "delete": "Delete",
     "deleting": "Deleting...",
@@ -83,7 +83,7 @@
     "deleting": "جاري الحذف...",
     "noToDos": "لا يوجد مهام للقيام بها بعد.",
     "noOnGoing": "لا يوجد مهام قيد التنفيذ بعد.",
-    "noDone": "لا يوجد مهام مكتملة بعد.", 
+    "noDone": "لا يوجد مهام مكتملة بعد.",
     "noBoards": "لا يوجد لوحات بعد.",
     "invDate": ".لا يوجد مواعيد نهائية بعد"
   }

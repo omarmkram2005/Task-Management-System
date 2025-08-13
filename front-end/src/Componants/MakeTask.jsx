@@ -61,8 +61,10 @@ export default function MakeTask({
 
   return (
     <div
-      className="task-card"
-      style={{ textAlign: lango === "ع" ? "right" : "left" }}
+      className="task-card "
+      style={{
+        textAlign: lango === "ع" ? "right" : "left",
+      }}
     >
       {isEditing && (
         <EditTask task={task} onClose={onClose} setRefresh={setRefresh} />
