@@ -1,8 +1,20 @@
 import { useContext, useEffect } from "react";
 import { useState } from "react";
-import { langChanger } from "../Context/CreateContexts";
+import { langChanger, sessionSaver } from "../Context/CreateContexts";
+import { useNavigate } from "react-router-dom";
 
 export default function GoCheckEmail() {
+  const nav = useNavigate();
+  const session = useContext(sessionSaver);
+  useEffect(() => {
+    if (
+      session?.session?.user?.identities &&
+      session.session.user.identities.length > 0
+    ) {
+      nav("/");
+    }
+  }, [session]);
+
   const [lang, setLang] = useState({});
   const { lang: lango, text } = useContext(langChanger);
   useEffect(() => {

@@ -4,7 +4,7 @@ import { supabase } from "../supabase";
 import { useEffect } from "react";
 import Login from "./LoginWithGoogle";
 import { NavLink, useNavigate } from "react-router-dom";
-import { langChanger } from "../Context/CreateContexts";
+import { langChanger, sessionSaver } from "../Context/CreateContexts";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -14,6 +14,16 @@ export default function Signup() {
   const nav = useNavigate();
   const [pass, setPass] = useState("");
   const [passErr, setPassErr] = useState(false);
+  const session = useContext(sessionSaver);
+  useEffect(() => {
+    if (
+      session?.session?.user?.identities &&
+      session.session.user.identities.length > 0
+    ) {
+      nav("/");
+    }
+  }, [session]);
+
   const [lang, setLang] = useState({});
   const { text } = useContext(langChanger);
   useEffect(() => {
