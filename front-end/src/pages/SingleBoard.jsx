@@ -359,14 +359,14 @@ export default function SingleBoard() {
                               borderRadius: snapshot.isDragging && "15px",
                             }}
                           >
-                            {
+                            {/* {
                               <MakeTask
                                 task={task}
                                 onEditClick={handleEditTaskClick}
                                 isEditing={editingTaskId == task.id}
                                 onClose={handelCloseForms}
                               />
-                            }
+                            } */}
                           </div>
                         )}
                       </Draggable>
