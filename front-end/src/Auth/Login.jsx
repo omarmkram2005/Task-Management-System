@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import Login from "./LoginWithGoogle";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { langChanger } from "../Context/CreateContexts";
+import { langChanger, sessionSaver } from "../Context/CreateContexts";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -13,6 +13,18 @@ export default function Signup() {
   const [notConf, setNotConf] = useState(false);
   const [netErr, setNetErr] = useState(false);
   const [pass, setPass] = useState("");
+  const [user, setUser] = useState({ identity_data: { avatar: "", name: "" } });
+  const session = useContext(sessionSaver);
+  useEffect(() => {
+    if (
+      session?.session?.user?.identities &&
+      session.session.user.identities.length > 0
+    ) {
+      setUser(session.session.user.identities[0]);
+      nav("/");
+    }
+  }, [session]);
+
   const [lang, setLang] = useState({});
   const nav = useNavigate();
   const { text } = useContext(langChanger);
@@ -39,7 +51,7 @@ export default function Signup() {
         : setNetErr(true);
     }
   }
-  lang;
+
   return (
     <div className="signup container">
       <form className="card-bg" onSubmit={(e) => handleLogin(e)}>
