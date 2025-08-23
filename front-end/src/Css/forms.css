@@ -14,12 +14,12 @@
 }
 .signup {
   display: flex;
-  height: 100vh;
   width: fit-content;
   align-items: center;
   justify-content: center;
 }
-.signup form input {
+.signup input,
+.signup select {
   flex-basis: 100%;
   padding: 15px 10px;
   background-color: var(--inputBgColor);
@@ -32,7 +32,7 @@
   border: none;
   outline: none;
 }
-.signup form input::placeholder {
+.signup input::placeholder {
   color: var(--inputPlaceholderColor);
 }
 .googleLogin {

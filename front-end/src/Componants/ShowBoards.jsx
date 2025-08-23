@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { supabase } from "../supabase";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { langChanger, sessionSaver } from "../Context/CreateContexts";
 import MakeBoard from "./MakeBoard";
 import AddBoard from "../Componants/AddBoard";
@@ -12,23 +12,45 @@ export default function ShowBoards() {
   const [addbutton, setAddbutton] = useState();
 
   const [lang, setLang] = useState({});
-  const session = useContext(sessionSaver);
+  const { profile } = useContext(sessionSaver);
   const { lang: lango, text } = useContext(langChanger);
   useEffect(() => {
     setLang(text);
   }, [text]);
   const nav = useNavigate();
+  const location = useLocation();
+
+  const isPersonal = location.pathname.includes("personal");
+  isPersonal
+    ? ""
+    : !profile.team_id
+    ? (window.location.pathname = "boards/personal")
+    : "";
   document.title = lango === "eng" ? "Boards" : "اللوحات";
 
+  // console.log(profile);
   useEffect(() => {
+    let query = supabase.from("boards").select("*");
+    if (isPersonal === true) {
+      query = query.is(
+        isPersonal ? "team_id" : "team_id",
+        isPersonal ? null : profile.team_id
+      );
+    }
+
+    query = query.eq(
+      isPersonal ? "user_id" : "team_id",
+      isPersonal ? profile.id : profile.team_id
+    );
+
     async function getdata(e) {
-      const { data, error } = await supabase
-        .from("boards")
-        .select("*")
-        .eq("user_id", session.session.user.id);
+      const { data, error } = await query;
 
       if (data) {
         setBoards(data);
+        // console.log(data);
+      } else {
+        // console.log(error);
       }
     }
     getdata();
@@ -41,10 +63,10 @@ export default function ShowBoards() {
     document.documentElement
   ).getPropertyValue("--highlightColor");
   const showBoards = boards.map((board, ind) => (
-    <MakeBoard key={ind} board={board} />
+    <MakeBoard key={ind} board={board} team_id={profile.team_id} />
   ));
   return (
-    <div>
+    <div className="container">
       {addbutton && (
         <div
           style={{
@@ -95,7 +117,7 @@ export default function ShowBoards() {
             {lang.noBoards}
           </h2>
         )}
-        {console.log(showBoards.length === 0 && boards[0] === "no data yet")}
+        {/* {console.log(showBoards.length === 0 && boards[0] === "no data yet")} */}
         {boards[0] === "no data yet" ? (
           <SkeletonTheme baseColor={baseColor} highlightColor={highLightColor}>
             <Skeleton width={"220px"} height={"230px"} />

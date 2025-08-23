@@ -1,9 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { supabase } from "../supabase";
-import { langChanger } from "../Context/CreateContexts";
-import { useNavigate } from "react-router-dom";
+import { langChanger, sessionSaver } from "../Context/CreateContexts";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function AddBoard({ setAddbutton }) {
+  const location = useLocation();
+  const { profile } = useContext(sessionSaver);
+
+  const isTeam = location.pathname.includes("team");
   const [form, setForm] = useState({
     title: "",
   });
@@ -25,7 +29,7 @@ export default function AddBoard({ setAddbutton }) {
     const { data, error } = await supabase.from("boards").insert([
       {
         title: form.title,
-        status: "on-going",
+        team_id: isTeam ? profile.team_id : null,
       },
     ]);
 
@@ -33,7 +37,7 @@ export default function AddBoard({ setAddbutton }) {
       console.error(error);
     } else {
       setAddbutton(false);
-      nav("/");
+      nav(isTeam ? "/boards/team" : "/boards/personal");
     }
 
     setSubmit(false);
@@ -51,7 +55,7 @@ export default function AddBoard({ setAddbutton }) {
         position: "fixed",
         top: "0",
         left: "0",
-        zIndex: "1000",
+        zIndex: "980",
       }}
     >
       <form

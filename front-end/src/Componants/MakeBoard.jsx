@@ -3,7 +3,7 @@ import { langChanger } from "../Context/CreateContexts";
 import { useNavigate } from "react-router-dom";
 import "../Css/tasks.css";
 import EditBoard from "./EditBoard";
-export default function MakeBoard({ board, onEditClick, isEditing, onClose }) {
+export default function MakeBoard({ board }) {
   const [time, setTime] = useState("");
   const [timeStatus, setTimeStatus] = useState("past");
   const nav = useNavigate();
@@ -22,7 +22,7 @@ export default function MakeBoard({ board, onEditClick, isEditing, onClose }) {
     hour12: true,
   };
   useEffect(() => {
-    const dateObjict = new Date(`${board.closest_due_date}z`);
+    const dateObjict = new Date(`${board.closest_due_date}`);
     function checkDate() {
       const today = new Date();
       const differenceInMS = dateObjict.getTime() - today.getTime();
@@ -58,16 +58,26 @@ export default function MakeBoard({ board, onEditClick, isEditing, onClose }) {
 
   return (
     <div className="board" onClick={() => nav(`/boards/${board.id}`)}>
-      <h2 className="title">{board.title}</h2>
+      <h2
+        title={board.title}
+        className="title"
+        style={{
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+        }}
+      >
+        {board.title}
+      </h2>
       <div className="tasksCounter">
         <div className="tasks">
-          <span>{lang.todo}</span> <span>{board.todo_count}</span>
+          <span>{lang.todo}</span> <span>{board.todo}</span>
         </div>
         <div className="tasks">
-          <span>{lang.ongoing}</span> <span>{board.ongoing_count}</span>
+          <span>{lang.ongoing}</span> <span>{board.ongoing}</span>
         </div>
         <div className="tasks">
-          <span>{lang.done}</span> <span>{board.done_count}</span>
+          <span>{lang.done}</span> <span>{board.done}</span>
         </div>
       </div>
 

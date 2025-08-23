@@ -29,8 +29,8 @@ export default function Signup() {
       email: email,
       password: pass,
     });
-    if (data) {
-      nav("/");
+    if (!error) {
+      window.location.pathname = "/";
     }
     if (error) {
       error.message === "Invalid login credentials"
@@ -42,7 +42,7 @@ export default function Signup() {
   }
 
   return (
-    <div className="signup container">
+    <div className="signup container" style={{ height: "calc(100vh - 70px)" }}>
       <form className="card-bg" onSubmit={(e) => handleLogin(e)}>
         <h2 className="m-text" style={{ margin: "0" }}>
           {lang.login}

@@ -8,16 +8,13 @@ import darkMode from "../assets/darkMode.png";
 export default function NavBar() {
   const [lango, setLango] = useState();
   const [drobDownOn, setDrobDownOn] = useState(false);
-  const [user, setUser] = useState({ identity_data: { avatar: "", name: "" } });
-  const session = useContext(sessionSaver);
-  useEffect(() => {
-    if (
-      session?.session?.user?.identities &&
-      session.session.user.identities.length > 0
-    ) {
-      setUser(session.session.user.identities[0]);
-    }
-  }, [session]);
+
+  const profile = useContext(sessionSaver);
+  // useEffect(() => {
+  //   if (profile) {
+  //     setUser(profile);
+  //   }
+  // }, [profile]);
 
   const nav = useNavigate();
   const { lang, setLang, text } = useContext(langChanger);
@@ -48,7 +45,7 @@ export default function NavBar() {
     if (error) {
       console.error("Logout failed:", error.message);
     } else {
-      <Navigate to="/login" replace />;
+      window.location.pathname = "/";
     }
   };
   return (
@@ -135,7 +132,7 @@ export default function NavBar() {
             >
               {lang.toUpperCase()}
             </button>
-            {session.session && (
+            {profile.session && (
               <div
                 style={{
                   padding: "0",
@@ -147,29 +144,27 @@ export default function NavBar() {
                 }}
                 className="drobdown-parent"
               >
-                {user?.identity_data?.avatar_url !== undefined ? (
+                {
                   <img
                     alt="sss"
                     width="37px"
-                    style={{ borderRadius: "50%" }}
-                    src={user?.identity_data?.avatar_url}
+                    height="37px"
+                    style={{
+                      borderRadius: "50%",
+                      border: "2px solid var(--secondary)",
+                    }}
+                    src={
+                      profile?.profile?.avatar_url?.length > 0
+                        ? profile?.profile?.avatar_url
+                        : "https://ui-avatars.com/api/?name=" +
+                          (!profile?.profile?.full_name
+                            ? "No Name"
+                            : profile?.profile?.full_name) +
+                          "&background=random&color=fff"
+                    }
                     onClick={() => setDrobDownOn(true)}
-                  ></img>
-                ) : (
-                  <svg
-                    className="drobdown"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="var(--text-main)"
-                    width={"37px"}
-                    viewBox="0 0 24 24"
-                    onClick={() => setDrobDownOn(true)}
-                  >
-                    <g data-name="60.User">
-                      <path d="M12 12a4 4 0 1 1 4-4 4 4 0 0 1-4 4zm0-6a2 2 0 1 0 2 2 2 2 0 0 0-2-2zM18.9 21.166l-1.972-.332a5 5 0 1 0-9.862 0l-1.966.332a7 7 0 1 1 13.806 0z" />
-                      <path d="M12 24a12 12 0 1 1 12-12 12.013 12.013 0 0 1-12 12zm0-22a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2z" />
-                    </g>
-                  </svg>
-                )}
+                  />
+                }
                 {drobDownOn && (
                   <div
                     className="drobdown"
@@ -189,17 +184,18 @@ export default function NavBar() {
                       flexWrap: "wrap",
                       width: "150px",
                       overflow: "hidden",
-                      zIndex: "1000",
+                      zIndex: "990",
                     }}
                   >
                     <button
                       className="listButton"
-                      style={{ padding: "10px 60px " }}
-                      onClick={(e) => setDrobDownOn(false)}
+                      onClick={(e) => {
+                        setDrobDownOn(false);
+                        nav("/profile");
+                      }}
+                      title={lango.profile}
                     >
-                      {user?.identity_data.name === undefined
-                        ? lango.profile
-                        : user?.identity_data.name}
+                      {lango.profile}
                     </button>
                     <button
                       className="listButton"

@@ -9,15 +9,20 @@ const Login = (props) => {
   };
 
   return (
-    <button
+    <a
       onClick={signInWithGoogle}
       className="googleLogin button"
+      target="_blank"
       style={{
         backgroundColor: "#d2d6dd",
         display: "flex",
         alignItems: "center",
         gap: "6px",
         color: "black",
+        textDecoration: "none",
+        borderRadius: "10px",
+        cursor: "pointer",
+        padding: "10px 20px",
       }}
     >
       <div
@@ -61,7 +66,7 @@ const Login = (props) => {
         </svg>
       </div>
       {props.text}
-    </button>
+    </a>
   );
 };
 

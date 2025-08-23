@@ -12,6 +12,10 @@ import { supabase } from "./supabase";
 import SingleBoard from "./pages/SingleBoard";
 import Error404 from "./Errors/Error404.jsx";
 import Redirect from "./Errors/Redirect.jsx";
+import Profile from "./pages/Profile.jsx";
+import EditProfile from "./Componants/EditProfile.jsx";
+import AddTeam from "./Componants/AddTeam.jsx";
+import ShowBoards from "./Componants/ShowBoards.jsx";
 function App() {
   if (!window.localStorage.getItem("lang")) {
     window.localStorage.setItem("lang", "eng");
@@ -27,7 +31,15 @@ function App() {
         <Route path="/" element={<WebSite />}>
           <Route element={<ProtectedRoute />}>
             <Route element={<Home />} path=""></Route>
+            <Route element={<ShowBoards />} path="boards/personal"></Route>
+            <Route element={<ShowBoards />} path="boards/team"></Route>
             <Route element={<SingleBoard />} path="boards/:id"></Route>
+            <Route element={<Profile />} path="profile"></Route>
+            <Route
+              element={<EditProfile />}
+              path="profile/edit/profile"
+            ></Route>
+            <Route element={<AddTeam />} path="profile/edit/team"></Route>
           </Route>
 
           <Route element={<Signup />} path="/signup"></Route>

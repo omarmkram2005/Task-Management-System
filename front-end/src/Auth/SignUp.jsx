@@ -57,7 +57,10 @@ export default function Signup() {
   };
   return (
     <>
-      <div className="signup container">
+      <div
+        className="signup container"
+        style={{ height: "calc(100vh - 70px)" }}
+      >
         <form className="card-bg" onSubmit={(e) => handleSignUp(e)}>
           <h2 className="m-text" style={{ margin: "0" }}>
             {lang.signup}

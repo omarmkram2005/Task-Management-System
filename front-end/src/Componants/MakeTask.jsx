@@ -17,7 +17,7 @@ export default function MakeTask({
   useEffect(() => {
     setLang(text);
   }, [text]);
-  const dateObjict = new Date(`${task.due_date}z`);
+  const dateObjict = new Date(`${task.due_date}`);
   const options = {
     year: "numeric",
     month: "numeric",
@@ -32,15 +32,13 @@ export default function MakeTask({
       const differenceInMS = dateObjict.getTime() - today.getTime();
       const oneDayInMS = 24 * 60 * 60 * 1000;
 
-      // حالة المستقبل
       if (differenceInMS > 0) {
         if (differenceInMS < oneDayInMS) {
-          // أقل من 24 ساعة
           const hours = Math.floor(differenceInMS / (1000 * 60 * 60));
           const minutes = Math.floor(
             (differenceInMS % (1000 * 60 * 60)) / (1000 * 60)
           );
-          const seconds = Math.floor((differenceInMS % (1000 * 60)) / 1000); // هذا السطر الجديد
+          const seconds = Math.floor((differenceInMS % (1000 * 60)) / 1000);
 
           setTime({ hours: hours, minutes: minutes, seconds: seconds });
           setTimeStatus("future-soon");
@@ -69,7 +67,17 @@ export default function MakeTask({
       {isEditing && (
         <EditTask task={task} onClose={onClose} setRefresh={setRefresh} />
       )}
-      <h4 className="task-title">{task.title}</h4>
+      <h4
+        className="task-title"
+        title={task.title}
+        style={{
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+        }}
+      >
+        {task.title}
+      </h4>
       <p className="task-description">{task.description}</p>
       <div className="penContainer">
         <span className="pen">

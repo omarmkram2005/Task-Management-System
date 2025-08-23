@@ -128,7 +128,7 @@ export default function AddTasks({ setAddbutton, setRefresh, board_id }) {
           onClick={(e) => SubmitData(e)}
           disabled={submit || form.title === ""}
         >
-          {submit ? "جاري الإضافة..." : "أضف المهمة"}
+          {submit ? lang.adding : lang.addTask}
         </button>
       </form>
     </div>

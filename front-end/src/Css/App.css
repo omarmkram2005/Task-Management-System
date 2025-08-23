@@ -167,3 +167,43 @@ select {
 #close-form {
   cursor: pointer;
 }
+.active {
+  border-color: var(--primary) !important;
+  background-color: var(--primary-hover);
+}
+.member {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 15px;
+  width: 170px;
+}
+
+@media (max-width: 450px) {
+  .member {
+    width: 100%;
+  }
+}
+.spinner {
+  border: 3px solid #ccc;
+  border-top: 3px solid #3498db;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  -webkit-animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
