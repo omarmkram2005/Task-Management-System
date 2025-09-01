@@ -90,6 +90,6 @@ export default function Home() {
       </div>
     </div>
   ) : (
-    nav("board/personal")
+    nav("boards/personal")
   );
 }

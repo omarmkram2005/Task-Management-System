@@ -199,7 +199,10 @@ export default function NavBar() {
                     </button>
                     <button
                       className="listButton"
-                      onClick={(e) => setDrobDownOn(false)}
+                      onClick={(e) => {
+                        setDrobDownOn(false);
+                        nav("/");
+                      }}
                     >
                       {lango.boards}
                     </button>
