@@ -37,7 +37,7 @@ export default function NavBar() {
     const { error } = await supabase.auth.signOut();
 
     if (error) {
-      console.error("Logout failed:", error.message);
+      // console.error( error.message);
     } else {
       nav("/");
     }
@@ -116,7 +116,7 @@ export default function NavBar() {
                 alignItems: "center",
                 justifyContent: "center",
               }}
-              onClick={(e) => {
+              onClick={() => {
                 setLang(lang === "eng" ? "ع" : "eng");
                 window.localStorage.setItem(
                   "lang",
@@ -183,7 +183,7 @@ export default function NavBar() {
                   >
                     <button
                       className="listButton"
-                      onClick={(e) => {
+                      onClick={() => {
                         setDrobDownOn(false);
                         nav("/profile");
                       }}
@@ -193,14 +193,14 @@ export default function NavBar() {
                     </button>
                     <button
                       className="listButton"
-                      onClick={(e) => {
+                      onClick={() => {
                         setDrobDownOn(false);
                         nav("/");
                       }}
                     >
                       {lango.boards}
                     </button>
-                    <button className="listButton" onClick={(e) => logout()}>
+                    <button className="listButton" onClick={() => logout()}>
                       {lango.logout}
                     </button>
                   </div>

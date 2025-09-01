@@ -42,7 +42,7 @@ export default function SingleBoard() {
         .eq("id", id);
 
       if (boardError) {
-        console.error("خطأ في الإضافة:", boardError);
+        // console.error( boardError);
         nav("/404");
       } else if (boardData.length === 0) {
         nav("/404");
@@ -56,7 +56,7 @@ export default function SingleBoard() {
           .eq("board_id", id);
 
         if (tasksError) {
-          console.error("خطأ في الإضافة:", tasksError);
+          // console.error( tasksError);
         } else {
           setTasks(tasksData);
         }
@@ -128,7 +128,7 @@ export default function SingleBoard() {
       .eq("id", taskId);
 
     if (error) {
-      console.error("Error updating task status:", error);
+      console.error(error);
     }
   };
 

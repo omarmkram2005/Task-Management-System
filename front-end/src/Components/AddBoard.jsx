@@ -34,7 +34,7 @@ export default function AddBoard({ setAddbutton }) {
     ]);
 
     if (error) {
-      console.error(error);
+      // console.error(error);
     } else {
       setAddbutton(false);
       nav(isTeam ? "/boards/team" : "/boards/personal");
@@ -75,7 +75,6 @@ export default function AddBoard({ setAddbutton }) {
         }}
         onSubmit={(e) => SubmitData(e)}
       >
-        {" "}
         <h2 style={{ margin: "10px 0", width: "100%", textAlign: "center" }}>
           {lang.addBoard}
         </h2>

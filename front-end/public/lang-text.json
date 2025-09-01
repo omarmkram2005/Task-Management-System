@@ -71,7 +71,10 @@
     "admin": "Admin",
     "member": "Member",
     "update": "Update",
-    "updating": "Updating..."
+    "updating": "Updating...",
+    "teamBoards": "Team Boards",
+    "personalBoards": "Personal Boards",
+    "home": "Home"
   },
   "ع": {
     "signup": "تسجيل",
@@ -145,6 +148,9 @@
     "admin": "مسؤول",
     "member": "عضو",
     "update": "تحديث",
-    "updating": "جاري التحديث..."
+    "updating": "جاري التحديث...",
+    "teamBoards": "لوحات الفريق",
+    "personalBoards": "اللوحات الشخصية",
+    "home": "الرئيسية"
   }
 }

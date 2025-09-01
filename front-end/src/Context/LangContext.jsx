@@ -22,7 +22,7 @@ function LangContext() {
           document.documentElement.setAttribute("dir", "rtl");
         }
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     }
     ChangeLang();

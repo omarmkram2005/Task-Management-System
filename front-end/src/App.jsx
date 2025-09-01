@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { Route, Router, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import GoCheckEmail from "./Auth/GoCheckEmail";
 import Login from "./Auth/Login";
 import ProtectedRoute from "./Auth/ProtectedRoutes";
@@ -8,7 +7,6 @@ import "./Css/App.css";
 import setTheme from "./Css/theme";
 import Home from "./pages/Home";
 import WebSite from "./pages/WebSite";
-import { supabase } from "./supabase";
 import SingleBoard from "./pages/SingleBoard";
 import Error404 from "./Errors/Error404.jsx";
 import Redirect from "./Errors/Redirect.jsx";

@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import NavBar from "../Components/NavBar";
 import { supabase } from "../supabase";
 
 export default function WebSite() {
   const [user, setUser] = useState(null);
-  const nav = useNavigate();
   if (!window.localStorage.getItem("lang")) {
     window.localStorage.setItem("lang", "eng");
   }

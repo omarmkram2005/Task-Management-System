@@ -1,4 +1,3 @@
-import React from "react";
 import { useState, useContext, useEffect } from "react";
 import { supabase } from "../supabase";
 import { langChanger, sessionSaver } from "../Context/CreateContexts";
@@ -52,7 +51,7 @@ function AddTeam() {
         .single();
 
       if (error) {
-        console.error("wrong idفة الفريق:", error);
+        // console.error(error);
         setTeamNotFoundErr(true);
       } else {
         const { error } = await supabase
@@ -61,14 +60,12 @@ function AddTeam() {
           .eq("id", userId)
           .then(({ error }) => {
             if (error) {
-              console.error("خطأ في الانضمام للفريق:", error);
+              // console.error( error);
             } else {
               nav("/profile");
             }
           });
       }
-    } else {
-      console.error("يرجى إدخال معرف الفريق");
     }
   }
   async function addTeam() {
@@ -78,7 +75,7 @@ function AddTeam() {
       .insert({ id: id, title: teamTitle });
 
     if (error) {
-      console.error("خطأ في إضافة الفريق:", error);
+      // console.error(error);
     } else {
       const { error: er } = await supabase
         .from("profiles ")

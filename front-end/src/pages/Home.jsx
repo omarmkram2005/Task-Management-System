@@ -1,11 +1,21 @@
 import "../Css/home.css";
 import "react-loading-skeleton/dist/skeleton.css";
 import { NavLink, useNavigate } from "react-router-dom";
-import { sessionSaver } from "../Context/CreateContexts";
-import { useContext } from "react";
+import { langChanger, sessionSaver } from "../Context/CreateContexts";
+import { useContext, useEffect, useState } from "react";
 
 export default function Home() {
   const { profile } = useContext(sessionSaver);
+  const [lang, setLang] = useState({});
+  const { text, lang: lango } = useContext(langChanger);
+
+  useEffect(() => {
+    setLang(text);
+  }, [text]);
+
+  useEffect(() => {
+    document.title = lang.home;
+  }, [lang]);
   const nav = useNavigate();
 
   return profile.team_id ? (
@@ -55,7 +65,7 @@ export default function Home() {
                 fontWeight: "bold",
               }}
             >
-              لوحاتي الشخصية
+              {lang.personalBoards}
             </h2>
           </NavLink>
 
@@ -83,7 +93,7 @@ export default function Home() {
                 fontWeight: "bold",
               }}
             >
-              لوحات الفريق
+              {lang.teamBoards}
             </h2>
           </NavLink>
         </div>

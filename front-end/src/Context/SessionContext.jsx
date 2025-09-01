@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "../supabase";
 import { sessionSaver } from "./CreateContexts";
 import LangContext from "./LangContext";
-import Loading from "../Componants/Loading";
+import Loading from "../Components/Loading";
 
 function SessionContext() {
   const [session, setSession] = useState(undefined);
@@ -43,7 +43,7 @@ function SessionContext() {
           .maybeSingle();
 
         if (error) {
-          console.error("خطأ في جلب البروفايل:", error);
+          // console.error( error);
         }
 
         if (!data) {
@@ -57,7 +57,7 @@ function SessionContext() {
             });
 
           if (insertError) {
-            console.error("خطأ في إنشاء البروفايل:", insertError);
+            // console.error( insertError);
           }
 
           setProfile({

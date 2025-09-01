@@ -13,9 +13,9 @@ export default function Signup() {
   const [notConf, setNotConf] = useState(false);
   const [netErr, setNetErr] = useState(false);
   const [pass, setPass] = useState("");
+  const nav = useNavigate();
 
   const [lang, setLang] = useState({});
-  const nav = useNavigate();
   const { text } = useContext(langChanger);
   useEffect(() => {
     setLang(text);
@@ -33,7 +33,7 @@ export default function Signup() {
       nav("/");
     }
     if (error) {
-      error.message === "Invalid login credentials"
+      error.message === "wrong login info"
         ? setWrongInfo(true)
         : error.message === "Email not confirmed"
         ? setNotConf(true)

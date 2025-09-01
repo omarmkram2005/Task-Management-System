@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import { langChanger } from "../Context/CreateContexts";
 import { useNavigate } from "react-router-dom";
 import "../Css/tasks.css";
-import EditBoard from "./EditBoard";
 export default function MakeBoard({ board }) {
   const [time, setTime] = useState("");
   const [timeStatus, setTimeStatus] = useState("past");

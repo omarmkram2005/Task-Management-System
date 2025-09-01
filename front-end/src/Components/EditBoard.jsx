@@ -33,7 +33,7 @@ export default function EditBoard({ board, onClose }) {
     if (!error) {
       onClose();
     } else {
-      console.error("Failed to update board:", error);
+      // console.error( error);
     }
     setSubmit(false);
   }
@@ -59,10 +59,9 @@ export default function EditBoard({ board, onClose }) {
     if (!tasksError && !boardsError) {
       nav("/");
     } else {
-      console.error(
-        "Failed to delete board or tasks:",
-        tasksError || boardsError
-      );
+      // console.error(
+      //   tasksError || boardsError
+      // );
     }
     setSubmit(false);
   }

@@ -41,7 +41,7 @@ export default function Signup() {
       });
 
       if (error) {
-        console.error("Signup error:", error.message);
+        // console.error( error.message);
         error.message.includes("is invalid" && "Email") && setInvEmailErr(true);
         error.message === "Failed to fetch" && setNetErr(true);
       } else {

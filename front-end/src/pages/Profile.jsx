@@ -6,7 +6,6 @@ import "../Css/forms.css";
 
 export default function Profile() {
   const { profile } = useContext(sessionSaver);
-  const [fullName, setFullName] = useState(profile?.full_name || "");
   const [teamid, setTeamid] = useState("");
   const [team_title, setTeamTitle] = useState("");
   const [teamMembers, setTeamMembers] = useState([]);
@@ -22,7 +21,7 @@ export default function Profile() {
   }, [text]);
 
   useEffect(() => {
-    document.title = lang.login;
+    document.title = lang.profile;
   }, [lang]);
 
   useEffect(() => {
@@ -59,14 +58,14 @@ export default function Profile() {
           .eq("id", editRole);
 
         if (error) {
-          console.error("Error updating role:", error.message);
+          // console.error( error.message);
         } else {
           window.location.reload();
         }
       }
-      if (profile.role === "member") {
-        console.error("You do not have permission to edit roles.");
-      }
+      // if (profile.role === "member") {
+      //   console.error("not an admin");
+      // }
     }
     edit_role();
   }, [submitRole]);

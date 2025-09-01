@@ -5,7 +5,7 @@ const Login = (props) => {
       provider: "google",
     });
 
-    if (error) console.error("Login error:", error.message);
+    // if (error) console.error(error.message);
   };
 
   return (

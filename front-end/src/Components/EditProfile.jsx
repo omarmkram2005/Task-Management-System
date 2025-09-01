@@ -1,14 +1,12 @@
 import { useState, useContext, useEffect } from "react";
 import { supabase } from "../supabase";
 import { langChanger, sessionSaver } from "../Context/CreateContexts";
-import { useNavigate } from "react-router-dom";
 
 function EditProfile() {
   const { userId, profile } = useContext(sessionSaver);
   const [fullName, setFullName] = useState(profile?.full_name || "");
   const [loading, setLoading] = useState(false);
   const [images, setImages] = useState([]);
-  const nav = useNavigate();
   const [lang, setLang] = useState({});
   const { text } = useContext(langChanger);
   useEffect(() => {
@@ -37,7 +35,7 @@ function EditProfile() {
           .upload(filePath, safeFile);
 
         if (uploadError) {
-          console.error("خطأ في الرفع:", uploadError);
+          // console.error( uploadError);
           continue;
         }
         const { data: urlData } = supabase.storage
@@ -52,7 +50,7 @@ function EditProfile() {
         .eq("id", userId);
 
       if (updateError) {
-        console.error("خطأ في تحديث الروابط:", updateError);
+        // console.error( updateError);
       }
     }
   }
@@ -74,38 +72,58 @@ function EditProfile() {
     setLoading(false);
 
     if (error) {
-      console.error("خطأ في تحديث البروفايل:", error);
+      // console.error( error);
     } else {
-      nav("/profile");
+      window.location.pathname = "/profile";
     }
   }
   return (
-    <div className="signup container">
-      <form
-        className="card-bg"
-        onSubmit={handleSubmit}
-        style={{ marginTop: "100px", flexDirection: "column", display: "flex" }}
-      >
-        <label>{lang.name}:</label>
-        <input
-          type="text"
-          value={fullName}
-          placeholder={lang.name}
-          onChange={(e) => setFullName(e.target.value)}
-        />
+    <>
+      {loading && (
+        <div
+          style={{
+            position: "fixed",
+            inset: 0, // = top:0,right:0,bottom:0,left:0
+            background: "rgba(0,0,0,0.5)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 9999,
+            backdropFilter: "blur(2px)",
+          }}
+        ></div>
+      )}
+      <div className="signup container">
+        <form
+          className="card-bg"
+          onSubmit={handleSubmit}
+          style={{
+            marginTop: "100px",
+            flexDirection: "column",
+            display: "flex",
+          }}
+        >
+          <label>{lang.name}:</label>
+          <input
+            type="text"
+            value={fullName}
+            placeholder={lang.name}
+            onChange={(e) => setFullName(e.target.value)}
+          />
 
-        <label>{lang.avatar}:</label>
-        <input
-          type="file"
-          accept="image/*"
-          onChange={(e) => setImages(Array.from(e.target.files))}
-        />
+          <label>{lang.avatar}:</label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => setImages(Array.from(e.target.files))}
+          />
 
-        <button className="button" type="submit" disabled={loading}>
-          {loading ? lang.updating : lang.update}
-        </button>
-      </form>
-    </div>
+          <button className="button" type="submit" disabled={loading}>
+            {loading ? lang.updating : lang.update}
+          </button>
+        </form>
+      </div>
+    </>
   );
 }
 
