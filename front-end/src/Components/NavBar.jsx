@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useContext, useEffect } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { langChanger, sessionSaver } from "../Context/CreateContexts";
 import setTheme from "../Css/theme";
 import { supabase } from "../supabase";
@@ -10,12 +10,6 @@ export default function NavBar() {
   const [drobDownOn, setDrobDownOn] = useState(false);
 
   const profile = useContext(sessionSaver);
-  // useEffect(() => {
-  //   if (profile) {
-  //     setUser(profile);
-  //   }
-  // }, [profile]);
-
   const nav = useNavigate();
   const { lang, setLang, text } = useContext(langChanger);
   useEffect(() => {
@@ -45,7 +39,7 @@ export default function NavBar() {
     if (error) {
       console.error("Logout failed:", error.message);
     } else {
-      window.location.pathname = "/";
+      nav("/");
     }
   };
   return (

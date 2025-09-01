@@ -35,7 +35,6 @@ export default function Profile() {
           .single();
 
         if (!error && data) {
-          console.log(data);
           setTeamid(data.id);
           setTeamTitle(data.title);
           const { data: mem, error: err } = await supabase
@@ -54,15 +53,10 @@ export default function Profile() {
   useEffect(() => {
     async function edit_role() {
       if (profile.role === "admin") {
-        {
-          console.log(editRole);
-        }
-
         const { error } = await supabase
           .from("profiles")
           .update({ role: role })
           .eq("id", editRole);
-        console.log(editRole);
 
         if (error) {
           console.error("Error updating role:", error.message);
@@ -183,6 +177,9 @@ export default function Profile() {
             }}
           >
             <svg
+              onClick={() => {
+                setEditRole(member.id);
+              }}
               fill="#ff0000"
               height="15px"
               width="15px"
@@ -311,6 +308,7 @@ export default function Profile() {
               </select>
               <button
                 type="submit"
+                className="button"
                 onClick={(e) => {
                   e.preventDefault();
                   setSubmitRole(true);
@@ -332,7 +330,6 @@ export default function Profile() {
           position: "relative",
         }}
       >
-        {/* Profile Card */}
         <div style={cardStyle}>
           <div style={titleStyle}>
             {lang.profile}

@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useContext, useEffect } from "react";
 import { supabase } from "../supabase";
 import { langChanger, sessionSaver } from "../Context/CreateContexts";
+import { useNavigate } from "react-router-dom";
 
 function AddTeam() {
   const { userId } = useContext(sessionSaver);
@@ -9,6 +10,7 @@ function AddTeam() {
   const [teamNotFoundErr, setTeamNotFoundErr] = useState(false);
   const [teamTitle, setTeamTitle] = useState("");
   const [active, setActive] = useState("join");
+  const nav = useNavigate();
   const [lang, setLang] = useState({});
 
   const { lang: lango, text } = useContext(langChanger);
@@ -61,7 +63,7 @@ function AddTeam() {
             if (error) {
               console.error("خطأ في الانضمام للفريق:", error);
             } else {
-              window.location.pathname = "/profile";
+              nav("/profile");
             }
           });
       }
@@ -83,7 +85,7 @@ function AddTeam() {
         .update({ team_id: id, role: "admin" })
         .eq("id", userId);
       if (!er) {
-        window.location.pathname = "/profile";
+        nav("/profile");
       }
     }
   }
@@ -156,6 +158,7 @@ function AddTeam() {
             style={{
               flexBasis: "50%",
               width: "45%",
+              cursor: !isUUID(teamid) ? "no-drop" : "pointer",
               borderRadius: "10px",
             }}
             type="button"
@@ -205,6 +208,7 @@ function AddTeam() {
               flexBasis: "50%",
               width: "45%",
               borderRadius: "10px",
+              cursor: !isUUID(teamid) ? "no-drop" : "pointer",
             }}
             type="button"
             disabled={!isUUID(teamid)}

@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import Login from "./LoginWithGoogle";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { langChanger, sessionSaver } from "../Context/CreateContexts";
+import { langChanger } from "../Context/CreateContexts";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -30,7 +30,7 @@ export default function Signup() {
       password: pass,
     });
     if (!error) {
-      window.location.pathname = "/";
+      nav("/");
     }
     if (error) {
       error.message === "Invalid login credentials"

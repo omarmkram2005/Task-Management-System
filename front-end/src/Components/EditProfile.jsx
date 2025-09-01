@@ -6,11 +6,9 @@ import { useNavigate } from "react-router-dom";
 function EditProfile() {
   const { userId, profile } = useContext(sessionSaver);
   const [fullName, setFullName] = useState(profile?.full_name || "");
-  const [teamid, setTeamid] = useState("");
   const [loading, setLoading] = useState(false);
   const [images, setImages] = useState([]);
-  const [team_title, setTeamTitle] = useState("");
-  const [active, setActive] = useState("join");
+  const nav = useNavigate();
   const [lang, setLang] = useState({});
   const { text } = useContext(langChanger);
   useEffect(() => {
@@ -78,7 +76,7 @@ function EditProfile() {
     if (error) {
       console.error("خطأ في تحديث البروفايل:", error);
     } else {
-      window.location.pathname = "/profile";
+      nav("/profile");
     }
   }
   return (
@@ -92,6 +90,7 @@ function EditProfile() {
         <input
           type="text"
           value={fullName}
+          placeholder={lang.name}
           onChange={(e) => setFullName(e.target.value)}
         />
 
@@ -102,7 +101,7 @@ function EditProfile() {
           onChange={(e) => setImages(Array.from(e.target.files))}
         />
 
-        <button type="submit" disabled={loading}>
+        <button className="button" type="submit" disabled={loading}>
           {loading ? lang.updating : lang.update}
         </button>
       </form>

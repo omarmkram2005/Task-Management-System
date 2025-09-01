@@ -10,7 +10,6 @@ import AddBoard from "./AddBoard";
 export default function ShowBoards() {
   const [boards, setBoards] = useState(["no data yet"]);
   const [addbutton, setAddbutton] = useState();
-
   const [lang, setLang] = useState({});
   const { profile } = useContext(sessionSaver);
   const { lang: lango, text } = useContext(langChanger);
@@ -21,14 +20,9 @@ export default function ShowBoards() {
   const location = useLocation();
 
   const isPersonal = location.pathname.includes("personal");
-  isPersonal
-    ? ""
-    : !profile.team_id
-    ? (window.location.pathname = "boards/personal")
-    : "";
+  isPersonal ? "" : !profile.team_id ? nav("boards/personal") : "";
   document.title = lango === "eng" ? "Boards" : "اللوحات";
 
-  // console.log(profile);
   useEffect(() => {
     let query = supabase.from("boards").select("*");
     if (isPersonal === true) {
@@ -48,9 +42,6 @@ export default function ShowBoards() {
 
       if (data) {
         setBoards(data);
-        // console.log(data);
-      } else {
-        // console.log(error);
       }
     }
     getdata();
@@ -117,7 +108,6 @@ export default function ShowBoards() {
             {lang.noBoards}
           </h2>
         )}
-        {/* {console.log(showBoards.length === 0 && boards[0] === "no data yet")} */}
         {boards[0] === "no data yet" ? (
           <SkeletonTheme baseColor={baseColor} highlightColor={highLightColor}>
             <Skeleton width={"220px"} height={"230px"} />
