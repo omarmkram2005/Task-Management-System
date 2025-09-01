@@ -6,10 +6,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import "../Css/home.css";
 import "../Css/tasks.css";
-import MakeTask from "../Componants/MakeTask";
-import AddTasks from "../Componants/AddTask";
+import MakeTask from "../Components/MakeTask";
+import AddTasks from "../Components/AddTask";
 import { langChanger, sessionSaver } from "../Context/CreateContexts";
-import EditBoard from "../Componants/EditBoard";
+import EditBoard from "../Components/EditBoard";
 
 export default function SingleBoard() {
   const [board, setBoard] = useState([]);

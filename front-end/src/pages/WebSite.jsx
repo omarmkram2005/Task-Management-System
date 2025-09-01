@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
-import NavBar from "../Componants/NavBar";
+import NavBar from "../Components/NavBar";
 import { supabase } from "../supabase";
 
 export default function WebSite() {

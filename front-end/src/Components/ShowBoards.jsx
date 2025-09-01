@@ -5,7 +5,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import { langChanger, sessionSaver } from "../Context/CreateContexts";
 import MakeBoard from "./MakeBoard";
-import AddBoard from "../Componants/AddBoard";
+import AddBoard from "./AddBoard";
 
 export default function ShowBoards() {
   const [boards, setBoards] = useState(["no data yet"]);

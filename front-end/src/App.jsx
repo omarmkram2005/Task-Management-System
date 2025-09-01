@@ -13,9 +13,9 @@ import SingleBoard from "./pages/SingleBoard";
 import Error404 from "./Errors/Error404.jsx";
 import Redirect from "./Errors/Redirect.jsx";
 import Profile from "./pages/Profile.jsx";
-import EditProfile from "./Componants/EditProfile.jsx";
-import AddTeam from "./Componants/AddTeam.jsx";
-import ShowBoards from "./Componants/ShowBoards.jsx";
+import EditProfile from "./Components/EditProfile.jsx";
+import AddTeam from "./Components/AddTeam.jsx";
+import ShowBoards from "./Components/ShowBoards.jsx";
 function App() {
   if (!window.localStorage.getItem("lang")) {
     window.localStorage.setItem("lang", "eng");
