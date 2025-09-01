@@ -270,7 +270,8 @@ export default function SingleBoard() {
               >
                 {board[0].title}
               </h1>
-              {(profile.role === "admin" || profile.id === board.user_id) && (
+              {(profile.role === "admin" ||
+                profile.id === board[0].user_id) && (
                 <span
                   style={{ width: "35px", height: "35px", cursor: "pointer" }}
                 >
@@ -348,6 +349,12 @@ export default function SingleBoard() {
                         key={task.id}
                         draggableId={task.id}
                         index={index}
+                        isDragDisabled={
+                          !(
+                            profile.id === task.user_id ||
+                            profile.role === "admin"
+                          )
+                        }
                       >
                         {(provided, snapshot) => (
                           <div
