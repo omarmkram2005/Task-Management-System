@@ -54,7 +54,6 @@ export default function NavBar() {
           top: "0",
           left: "0",
           boxShadow: "0 0 10px 0 #9292ffde",
-          borderBottom: "1px solid #acacff",
         }}
       >
         <div

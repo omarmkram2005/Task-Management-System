@@ -88,9 +88,14 @@ export default function ShowBoards() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
+          marginTop: "80px",
         }}
       >
-        <h1 style={{ fontSize: "40px" }}>{lang.boards}</h1>
+        <h1 style={{ fontSize: "28px" }}>
+          {window.location.pathname.includes("team")
+            ? lang.teamBoards
+            : lang.personalBoards}
+        </h1>
         <button className="button" onClick={() => setAddbutton(true)}>
           {lang.addBoard}
         </button>

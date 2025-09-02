@@ -18,8 +18,7 @@
   -ms-border-radius: 15px;
   -o-border-radius: 15px;
   text-align: center;
-  box-shadow: 0 0 10px 0 #9292ffde;
-  border: 1px solid #acacff;
+  box-shadow: 0 0 8px 0 #9292ff63;
   cursor: pointer;
   overflow: hidden;
 }

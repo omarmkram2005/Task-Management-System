@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import { supabase } from "../supabase";
-
+import Loading from "../Components/Loading";
 const ProtectedRoute = ({ children }) => {
   const [session, setSession] = useState(undefined);
 
@@ -22,7 +22,7 @@ const ProtectedRoute = ({ children }) => {
     return () => listener.subscription.unsubscribe();
   }, []);
 
-  if (session === undefined) return <div>Loading...</div>;
+  if (session === undefined) return <Loading />;
 
   if (!session) return <Navigate to="/login" replace />;
 

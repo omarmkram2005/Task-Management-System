@@ -1,4 +1,4 @@
-function Loading() {
+export default function Loading() {
   return (
     <div
       style={{
@@ -13,5 +13,3 @@ function Loading() {
     </div>
   );
 }
-
-export default Loading;

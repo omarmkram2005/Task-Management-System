@@ -60,7 +60,7 @@ export default function Home() {
           >
             <h2
               style={{
-                fontSize: "1.5em",
+                fontSize: "23px",
                 color: "var(--text-main)",
                 fontWeight: "bold",
               }}

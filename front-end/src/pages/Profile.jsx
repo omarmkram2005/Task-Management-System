@@ -69,6 +69,20 @@ export default function Profile() {
     }
     edit_role();
   }, [submitRole]);
+
+  async function deleteMem(id) {
+    const { error } = await supabase
+      .from("profiles")
+      .update({ role: "member", team_id: null })
+      .eq("id", id);
+
+    if (error) {
+      // console.error( error.message);
+    } else {
+      window.location.reload();
+    }
+  }
+
   const showTeamMembers = teamMembers.map((member, index) => (
     <div key={index} className="member">
       <div style={{ width: "30px", height: "30px", borderRadius: "100%" }}>
@@ -177,7 +191,7 @@ export default function Profile() {
           >
             <svg
               onClick={() => {
-                setEditRole(member.id);
+                deleteMem(member.id);
               }}
               fill="#ff0000"
               height="15px"
@@ -250,7 +264,7 @@ export default function Profile() {
             backgroundColor: "#151617ad",
             borderRadius: "12px",
             boxShadow: "0px 4px 12px rgba(0,0,0,0.3)",
-            position: "absolute",
+            position: "fixed",
             top: "0",
             left: "0",
             zIndex: "990",
