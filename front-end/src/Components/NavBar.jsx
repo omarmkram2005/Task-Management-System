@@ -39,7 +39,7 @@ export default function NavBar() {
     if (error) {
       // console.error( error.message);
     } else {
-      nav("/");
+      window.location.pathname = "/";
     }
   };
   return (
@@ -69,7 +69,7 @@ export default function NavBar() {
             style={{ margin: "0", padding: "0", cursor: "pointer" }}
             onClick={() => nav("/")}
           >
-            Taskly
+            Taskaty
           </h1>
           <div
             style={{
