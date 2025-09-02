@@ -9,12 +9,13 @@ import { langChanger } from "../Context/CreateContexts";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
+
   const [wrongInfo, setWrongInfo] = useState(false);
   const [notConf, setNotConf] = useState(false);
   const [netErr, setNetErr] = useState(false);
-  const [pass, setPass] = useState("");
   const nav = useNavigate();
 
+  const [pass, setPass] = useState("");
   const [lang, setLang] = useState({});
   const { text } = useContext(langChanger);
   useEffect(() => {
@@ -47,6 +48,7 @@ export default function Signup() {
         <h2 className="m-text" style={{ margin: "0" }}>
           {lang.login}
         </h2>
+
         <input
           type="email"
           placeholder={lang.email + "..."}
@@ -66,6 +68,7 @@ export default function Signup() {
           min={6}
           onChange={(e) => setPass(e.target.value)}
         />
+
         {wrongInfo && (
           <div dir={lang === "ع" && "rtl"} className="err">
             {lang.wrongInfo}
