@@ -62,7 +62,7 @@ function AddTeam() {
             if (error) {
               // console.error( error);
             } else {
-              nav("/profile");
+              window.location.pathname = "/profile";
             }
           });
       }
@@ -82,7 +82,7 @@ function AddTeam() {
         .update({ team_id: id, role: "admin" })
         .eq("id", userId);
       if (!er) {
-        nav("/profile");
+        window.location.pathname = "/profile";
       }
     }
   }
