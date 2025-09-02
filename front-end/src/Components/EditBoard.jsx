@@ -62,6 +62,7 @@ export default function EditBoard({ board, onClose }) {
       // console.error(
       //   tasksError || boardsError
       // );
+      // sdsd
     }
     setSubmit(false);
   }
