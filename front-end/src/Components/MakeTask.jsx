@@ -75,6 +75,7 @@ export default function MakeTask({
           whiteSpace: "nowrap",
           overflow: "hidden",
           textOverflow: "ellipsis",
+          width: "250px",
         }}
       >
         {task.title}
