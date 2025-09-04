@@ -39,6 +39,7 @@ export default function NavBar() {
     if (error) {
       // console.error( error.message);
     } else {
+      window.localStorage.removeItem("sb-yznwpuvtvgxbdquakfel-auth-token");
       window.location.pathname = "/";
     }
   };

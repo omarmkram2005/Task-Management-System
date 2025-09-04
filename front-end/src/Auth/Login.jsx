@@ -31,7 +31,7 @@ export default function Signup() {
       password: pass,
     });
     if (!error) {
-      nav("/");
+      window.location.pathname = "/";
     }
     if (error) {
       error.message === "wrong login info"
