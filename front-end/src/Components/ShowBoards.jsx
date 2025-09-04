@@ -22,8 +22,7 @@ export default function ShowBoards() {
   const isPersonal = location.pathname.includes("personal");
   isPersonal ? "" : !profile.team_id ? nav("boards/personal") : "";
   document.title = isPersonal ? text.personalBoards : text.teamBoards;
-  console.log(lango.personalBoards);
-  console.log(lango);
+
   useEffect(() => {
     let query = supabase.from("boards").select("*");
     if (isPersonal === true) {
