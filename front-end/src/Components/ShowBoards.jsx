@@ -21,7 +21,7 @@ export default function ShowBoards() {
 
   const isPersonal = location.pathname.includes("personal");
   isPersonal ? "" : !profile.team_id ? nav("boards/personal") : "";
-  document.title = isPersonal ? lango.personalBoards : lango.teamBoards;
+  document.title = isPersonal ? text.personalBoards : text.teamBoards;
   console.log(lango.personalBoards);
   console.log(lango);
   useEffect(() => {
