@@ -63,11 +63,6 @@ A full-stack **task management application** built with **React + Vite** and **S
 
 ---
 
-## 📸 Screenshots
-*(Add screenshots here: Login page, Dashboard, Boards, Dark/Light mode, etc.)*
-
----
-
 ## ⚙️ Installation & Setup
 
 1. Clone the repository
